@@ -4,6 +4,7 @@
 
 class ColorSetter {
 public:
+  ColorSetter() : red(0.0), green(0.0), blue(0.0) {}
   ColorSetter(GLfloat red, GLfloat green, GLfloat blue)
     : red(red), green(green), blue(blue) { }
 
