@@ -1,4 +1,4 @@
-SRCS := main.cc
+SRCS := main.cc hexagon.cc
 OBJECTS := $(SRCS:.cc=.o)
 EXECUTABLE ?= main
 
