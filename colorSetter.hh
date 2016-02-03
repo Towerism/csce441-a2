@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GL/glut.h>
+#include <array>
 
 class ColorSetter {
 public:
@@ -13,3 +14,12 @@ public:
 private:
   GLfloat red, green, blue;
 };
+
+template <int count>
+std::array<ColorSetter, count> makeColorSetters(GLfloat red,
+                                                GLfloat green,
+                                                GLfloat blue) {
+  std::array<ColorSetter, count> colorSetters;
+  colorSetters.fill(ColorSetter(red, green, blue));
+  return colorSetters;
+}
