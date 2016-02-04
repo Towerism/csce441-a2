@@ -3,10 +3,6 @@
 #include "colorSetter.hh"
 #include "hexagon.hh"
 
-#include <algorithm>
-#include <cmath>
-#include <functional>
-
 A2Object::A2Object(int x, int y)
   : Entity(x, y),
     spinning(false),
