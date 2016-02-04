@@ -20,7 +20,6 @@ A2Object::A2Object(int x, int y)
 {}
 
 void A2Object::update() {
-  spinSpeedBias = 30.0;
   if (spinning)
     spinLayer();
 }
@@ -35,37 +34,33 @@ void A2Object::keyboardEvent(char key, int x, int y) {
 }
 
 void A2Object::mouseEvent(int button, int state, int x, int y) {
+  lastMouseY = y;
+  lastMouseState = state;
   switch (button) {
   case GLUT_LEFT_BUTTON:
-    spinSpeed = spinSpeedBase;
-    if (state == GLUT_DOWN) {
-      if (firstClick)
-        yHome = y;
-      firstClick = false;
-      reverse = false;
-      spinning = true;
-    } else {
-      spinning = false;
-    }
+    mouseDown(false);
     break;
   case GLUT_MIDDLE_BUTTON:
     break;
   case GLUT_RIGHT_BUTTON:
-    spinSpeed = spinSpeedBase;
-    if (state == GLUT_DOWN) {
-      if (firstClick)
-        yHome = y;
-      firstClick = false;
-      reverse = true;
-      spinning = true;
-    } else {
-      spinning = false;
-    }
+    mouseDown(true);
     break;
   default:
     break;
   }  
-  lastMouseY = y;
+}
+
+void A2Object::mouseDown(bool reverse) {
+    spinSpeed = spinSpeedBase;
+    if (lastMouseState == GLUT_DOWN) {
+      if (firstClick)
+        yHome = lastMouseY;
+      firstClick = false;
+      this->reverse = reverse;
+      spinning = true;
+    } else {
+      spinning = false;
+    }
 }
 
 void A2Object::spinLayer() {
@@ -77,15 +72,15 @@ void A2Object::spinLayer() {
     spin += 360.0;
 }
 
-#include <iostream>
 void A2Object::updateSpinSpeed() {
   GLfloat difference = lastMouseY - yHome;
   GLfloat spinSpeedTarget = spinSpeedBase + difference / spinSpeedBias;
   GLfloat increment = 0.02;
-  if (spinSpeed - spinSpeedTarget < 0)
-    spinSpeed += increment;
-  else if (spinSpeed - spinSpeedTarget > 0)
+  if (spinSpeed < spinSpeedTarget)
     spinSpeed -= increment;
+  else if (spinSpeed > spinSpeedTarget)
+    spinSpeed += increment;
   if (spinSpeed < 0.0)
     spinSpeed = 0.0;
 }
+
