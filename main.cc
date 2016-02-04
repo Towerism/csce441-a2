@@ -1,10 +1,10 @@
 #include "a2Object.hh"
 #include "background.hh"
-#include "delegator.hh"
+#include "eventDelegator.hh"
 
 #include <GL/glut.h>
 
-Delegator delegator;
+EventDelegator eventDelegator;
 
 void initGlut() {
   glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
@@ -21,8 +21,8 @@ void initDisplay() {
 void initEntities() {
   Background* background = new Background(-50, -50, 100, 100);
   A2Object* a2Object = new A2Object(-25, 25);
-  delegator.add(background);
-  delegator.add(a2Object);
+  eventDelegator.add(background);
+  eventDelegator.add(a2Object);
 }
 
 void init(void) 
@@ -45,22 +45,22 @@ void reshape(int w, int h)
 void draw(void)
 {
   glClear(GL_COLOR_BUFFER_BIT);
-  delegator.draw();
+  eventDelegator.draw();
 
   glutSwapBuffers();
 }
 
 void idle() {
-  delegator.idle();
+  eventDelegator.idle();
   glutPostRedisplay();
 }
 
 void mouse(int button, int status, int x, int y) {
-  delegator.mouse(button, status, x, y);
+  eventDelegator.mouse(button, status, x, y);
 }
 
 void keyboard(unsigned char key, int x, int y) {
-  delegator.keyboard(key,  x, y);
+  eventDelegator.keyboard(key,  x, y);
 }
 
 void attachCallbacks() {
@@ -72,7 +72,7 @@ void attachCallbacks() {
 }
 
 /* 
- *  Request double buffer delegator mode.
+ *  Request double buffer mode.
  *  Register mouse input callback functions
  */
 int main(int argc, char** argv)

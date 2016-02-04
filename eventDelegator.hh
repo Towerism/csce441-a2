@@ -6,9 +6,9 @@
 #include <memory>
 
 // delegates events to entities
-class Delegator {
+class EventDelegator {
 public:
-  Delegator() { }
+  EventDelegator() { }
 
   void add(Entity* entity);
   

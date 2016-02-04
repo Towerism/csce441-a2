@@ -1,4 +1,4 @@
-SRCS := main.cc hexagon.cc a2Object.cc delegator.cc background.cc rectangle.cc
+SRCS := main.cc hexagon.cc a2Object.cc eventDelegator.cc background.cc rectangle.cc
 OBJECTS := $(SRCS:.cc=.o)
 EXECUTABLE ?= main
 
