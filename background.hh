@@ -2,7 +2,10 @@
 
 #include "entity.hh"
 
+#include "colorSetter.hh"
+
 #include <GL/glut.h>
+#include <memory>
 
 // draws and controls a hexagon on the screen
 class Background : public Entity {
@@ -17,4 +20,5 @@ public:
 
 private:
   int width, height;
+  std::shared_ptr<ColorSetter> color;
 };

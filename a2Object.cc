@@ -22,7 +22,7 @@ void A2Object::update() {
 }
 
 void A2Object::draw() {
-  ColorSetter color(1.0, 1.0, 1.0);
+  ColorSetter color(0.4, 0.2, 0.05);
   drawHexagon(x, y, 50, 50, 12, color, hexagonMode);
 }
 
