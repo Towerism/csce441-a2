@@ -1,3 +1,5 @@
+// Base class for receiving messages from
+// opengl callbacks
 class Entity {
 public:
   Entity(int x, int y) : x(x), y(y) { }
