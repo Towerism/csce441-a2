@@ -31,3 +31,8 @@ void Delegator::mouse(int button, int status, int x, int y) {
   for (auto& entity : entities)
     entity->mouseEvent(button, status, x, y);
 }
+
+void Delegator::keyboard(unsigned char key, int x, int y) {
+  for (auto& entity : entities)
+    entity->keyboardEvent(key, x, y);
+}

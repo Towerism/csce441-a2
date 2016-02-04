@@ -15,8 +15,9 @@ void drawHexagon(GLint x, GLint y, GLint w, GLint h, GLint delta,
 
 // Same as above, except only one color is specified for all the edges
 // plus the fill color
+// Mode allows you to set the vertex mode for openGL
 void drawHexagon(GLint x, GLint y, GLint w, GLint h, GLint delta,
-                 ColorSetter color);
+                 ColorSetter color, GLenum mode = GL_POLYGON);
 
 // draw a colored line starting at (x1, y1) and ending at (x2, y2) 
 void drawLine(GLint x1, GLint y1, GLint x2, GLint y2, ColorSetter color);

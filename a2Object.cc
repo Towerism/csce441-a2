@@ -12,7 +12,8 @@ A2Object::A2Object(int x, int y)
     yHome(0),
     spinSpeedBase(5.0),
     spinSpeed(spinSpeedBase),
-    spinSpeedBias(30.0)
+    spinSpeedBias(30.0),
+    hexagonMode(GL_POLYGON)
 {}
 
 void A2Object::update() {
@@ -22,11 +23,21 @@ void A2Object::update() {
 
 void A2Object::draw() {
   ColorSetter color(1.0, 1.0, 1.0);
-  drawHexagon(x, y, 50, 50, 12, color);
+  drawHexagon(x, y, 50, 50, 12, color, hexagonMode);
 }
 
-void A2Object::keyboardEvent(char key, int x, int y) {
-  
+void A2Object::keyboardEvent(unsigned char key, int x, int y) {
+  switch (key) {
+  case '1':
+    hexagonMode = GL_POINTS;
+    break;
+  case '2':
+    hexagonMode = GL_LINE_STRIP;
+    break;
+  case '3':
+    hexagonMode = GL_POLYGON;
+    break;
+  }
 }
 
 void A2Object::mouseEvent(int button, int state, int x, int y) {

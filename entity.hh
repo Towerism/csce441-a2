@@ -11,7 +11,7 @@ public:
   virtual void update() = 0;
   virtual void draw() = 0;
 
-  virtual void keyboardEvent(char key, int x, int y) = 0;
+  virtual void keyboardEvent(unsigned char key, int x, int y) = 0;
   virtual void mouseEvent(int button, int state, int x, int y) = 0;
 
   GLfloat getSpin() const { return spin; }

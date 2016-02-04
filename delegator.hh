@@ -15,6 +15,7 @@ public:
   void draw();
   void idle();
   void mouse(int button, int status, int x, int y);
+  void keyboard(unsigned char key, int x, int y);
 
 private:
   std::vector<std::unique_ptr<Entity>> entities;

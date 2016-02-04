@@ -20,17 +20,18 @@ void drawHexagon(GLint x, GLint y, GLint w, GLint h, GLint delta,
 }
 
 void drawHexagon(GLint x, GLint y, GLint w, GLint h, GLint delta,
-                 ColorSetter color) {
+                 ColorSetter color, GLenum mode) {
   GLint meetup = y - (h / 2);
 
   color();
-  glBegin(GL_POLYGON);
+  glBegin(mode);
   glVertex2i(x, meetup);
   glVertex2i(x + delta, y - h);
   glVertex2i(x + w - delta, y - h);
   glVertex2i(x + w, meetup);
   glVertex2i(x + w - delta, y);
   glVertex2i(x + delta, y);
+  glVertex2i(x, meetup);
   glEnd();
 }
 

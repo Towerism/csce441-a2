@@ -12,7 +12,7 @@ public:
   virtual void update() override;
   virtual void draw() override;
 
-  virtual void keyboardEvent(char key, int x, int y) override;
+  virtual void keyboardEvent(unsigned char key, int x, int y) override;
   virtual void mouseEvent(int button, int state, int x, int y) override;
 
 private:
@@ -25,6 +25,7 @@ private:
   GLfloat spinSpeedBase;
   GLfloat spinSpeed;
   GLfloat spinSpeedBias; // spin speed's resistance to change
+  GLenum hexagonMode; // openGL mode used when drawing the hexagon
 
   void mouseDown(bool reverse);
   void spinLayer();

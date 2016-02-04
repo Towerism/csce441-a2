@@ -41,6 +41,10 @@ void mouse(int button, int status, int x, int y) {
   delegator.mouse(button, status, x, y);
 }
 
+void keyboard(unsigned char key, int x, int y) {
+  delegator.keyboard(key,  x, y);
+}
+
 /* 
  *  Request double buffer delegator mode.
  *  Register mouse input callback functions
@@ -56,6 +60,7 @@ int main(int argc, char** argv)
   glutDisplayFunc(draw); 
   glutReshapeFunc(reshape); 
   glutMouseFunc(mouse);
+  glutKeyboardFunc(keyboard);
   glutIdleFunc(idle);
   glutMainLoop();
   return 0;   /* ANSI C requires main to return int. */
