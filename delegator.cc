@@ -1,4 +1,4 @@
-#include "display.hh"
+#include "delegator.hh"
 
 #include <GL/glut.h>
 
@@ -21,7 +21,6 @@ void Delegator::drawEntity(std::unique_ptr<Entity>& entity) {
   entity->draw();
   glPopMatrix();
 }
-
 
 void Delegator::idle() {
   for (auto& entity : entities)

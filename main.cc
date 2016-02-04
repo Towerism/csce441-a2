@@ -1,5 +1,5 @@
 #include "a2Object.hh"
-#include "display.hh"
+#include "delegator.hh"
 
 #include <GL/glut.h>
 
@@ -17,6 +17,7 @@ void init(void)
 {
   glClearColor (0.0, 0.0, 0.0, 0.0);
   glShadeModel (GL_FLAT);
+
   A2Object* a2Object = new A2Object(-25, 25);
   delegator.add(a2Object);
 }
