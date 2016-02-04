@@ -6,13 +6,11 @@
 #include <functional>
 
 void A2Object::update() {
-  if (spinning) {
+  if (spinning)
     spinLayer();
-  }
 }
 
 void A2Object::draw() {
-  glRotatef(spin, 0.0, 0.0, 1.0);
   ColorSetter color(1.0, 1.0, 1.0);
   drawHexagon(x, y, 50, 50, 12, color);
 }
@@ -30,9 +28,10 @@ void A2Object::mouseEvent(int button, int state, int x, int y) {
       firstClick = false;
       reverse = false;
       spinning = true;
-    }
-    else
+    } else {
       spinning = false;
+      spinSpeed = 0.0;
+    }
     break;
   case GLUT_MIDDLE_BUTTON:
     break;
@@ -43,8 +42,10 @@ void A2Object::mouseEvent(int button, int state, int x, int y) {
       firstClick = false;
       reverse = true;
       spinning = true;
+    } else {
+      spinning = false;
+      spinSpeed = 0.0;
     }
-    else
     break;
   default:
     break;
@@ -53,14 +54,14 @@ void A2Object::mouseEvent(int button, int state, int x, int y) {
 }
 
 void A2Object::spinLayer() {
-  spin = spin + spinVelocity * (reverse ? -1 : 1);
+  spin = spin + spinSpeed * (reverse ? -1 : 1);
   if (spin > 360.0)
     spin = spin - 360.0;
 }
 
 void A2Object::updateSpinVelocity(int y) {
-  GLfloat spinVelocityChange = (y - yHome) / spinVelocityBias;
-  spinVelocity = spinVelocityBase + spinVelocityChange;
-  if ((reverse && spinVelocity > 0.0) || spinVelocity < 0.0)
-    spinVelocity = 0.0;
+  GLfloat spinSpeedChange = (y - yHome) / spinSpeedBias;
+  spinSpeed = spinSpeedBase + spinSpeedChange;
+  if (spinSpeed < 0.0)
+    spinSpeed = 0.0;
 }
