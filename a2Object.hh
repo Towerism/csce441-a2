@@ -30,4 +30,5 @@ private:
   void mouseDown(bool reverse);
   void spinLayer();
   void updateSpinSpeed();
+  void updateSpin();
 };
