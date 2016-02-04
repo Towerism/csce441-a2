@@ -25,5 +25,5 @@ private:
   GLfloat spinSpeedBias = 30.0; // spin speed's resistance to change
 
   void spinLayer();
-  void updateSpinVelocity(int y);
+  void updateSpinSpeed(int y);
 };

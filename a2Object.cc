@@ -50,7 +50,7 @@ void A2Object::mouseEvent(int button, int state, int x, int y) {
   default:
     break;
   }  
-  updateSpinVelocity(y);
+  updateSpinSpeed(y);
 }
 
 void A2Object::spinLayer() {
@@ -59,7 +59,7 @@ void A2Object::spinLayer() {
     spin = spin - 360.0;
 }
 
-void A2Object::updateSpinVelocity(int y) {
+void A2Object::updateSpinSpeed(int y) {
   GLfloat spinSpeedChange = (y - yHome) / spinSpeedBias;
   spinSpeed = spinSpeedBase + spinSpeedChange;
   if (spinSpeed < 0.0)
