@@ -1,15 +1,14 @@
+#include "a2Object.hh"
+#include "display.hh"
+
 #include <GL/glut.h>
 
-#include "a2Object.hh"
+Display display;
 
-A2Object a2Object(-25, 25);
-
-void display(void)
+void draw(void)
 {
   glClear(GL_COLOR_BUFFER_BIT);
-  glPushMatrix();
-  a2Object.draw();
-  glPopMatrix();
+  display.draw();
 
   glutSwapBuffers();
 }
@@ -18,6 +17,8 @@ void init(void)
 {
   glClearColor (0.0, 0.0, 0.0, 0.0);
   glShadeModel (GL_FLAT);
+  A2Object* a2Object = new A2Object(-25, 25);
+  display.add(a2Object);
 }
 
 void reshape(int w, int h)
@@ -31,12 +32,12 @@ void reshape(int w, int h)
 }
 
 void idle() {
-  a2Object.update();
+  display.idle();
   glutPostRedisplay();
 }
 
 void mouse(int button, int status, int x, int y) {
-  a2Object.mouseEvent(button, status, x, y);
+  display.mouse(button, status, x, y);
 }
 
 /* 
@@ -50,8 +51,8 @@ int main(int argc, char** argv)
   glutInitWindowSize (250, 250); 
   glutInitWindowPosition (100, 100);
   glutCreateWindow ("Martin Fracker - Assignment 2");
-  init ();
-  glutDisplayFunc(display); 
+  init();
+  glutDisplayFunc(draw); 
   glutReshapeFunc(reshape); 
   glutMouseFunc(mouse);
   glutIdleFunc(idle);
