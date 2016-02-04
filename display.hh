@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 
+// delegates drawing procedure to entities
 class Display {
 public:
   Display() { }
