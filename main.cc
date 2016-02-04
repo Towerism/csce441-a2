@@ -3,12 +3,12 @@
 
 #include <GL/glut.h>
 
-Display display;
+Delegator delegator;
 
 void draw(void)
 {
   glClear(GL_COLOR_BUFFER_BIT);
-  display.draw();
+  delegator.draw();
 
   glutSwapBuffers();
 }
@@ -18,7 +18,7 @@ void init(void)
   glClearColor (0.0, 0.0, 0.0, 0.0);
   glShadeModel (GL_FLAT);
   A2Object* a2Object = new A2Object(-25, 25);
-  display.add(a2Object);
+  delegator.add(a2Object);
 }
 
 void reshape(int w, int h)
@@ -32,16 +32,16 @@ void reshape(int w, int h)
 }
 
 void idle() {
-  display.idle();
+  delegator.idle();
   glutPostRedisplay();
 }
 
 void mouse(int button, int status, int x, int y) {
-  display.mouse(button, status, x, y);
+  delegator.mouse(button, status, x, y);
 }
 
 /* 
- *  Request double buffer display mode.
+ *  Request double buffer delegator mode.
  *  Register mouse input callback functions
  */
 int main(int argc, char** argv)

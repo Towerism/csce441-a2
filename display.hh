@@ -5,10 +5,10 @@
 #include <vector>
 #include <memory>
 
-// delegates drawing procedure to entities
-class Display {
+// delegates events to entities
+class Delegator {
 public:
-  Display() { }
+  Delegator() { }
 
   void add(Entity* entity);
   

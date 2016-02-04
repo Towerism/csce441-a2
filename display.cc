@@ -2,20 +2,20 @@
 
 #include <GL/glut.h>
 
-void Display::add(Entity* entity) {
+void Delegator::add(Entity* entity) {
   entities.emplace_back(entity);
 }
 
-void Display::draw() {
+void Delegator::draw() {
   drawEntities();
 }
 
-void Display::drawEntities() {
+void Delegator::drawEntities() {
   for (auto& entity : entities)
     drawEntity(entity);
 }
 
-void Display::drawEntity(std::unique_ptr<Entity>& entity) {
+void Delegator::drawEntity(std::unique_ptr<Entity>& entity) {
   glPushMatrix();
   glRotatef(entity->getSpin(), 0.0, 0.0, 1.0);
   entity->draw();
@@ -23,12 +23,12 @@ void Display::drawEntity(std::unique_ptr<Entity>& entity) {
 }
 
 
-void Display::idle() {
+void Delegator::idle() {
   for (auto& entity : entities)
     entity->update();
 }
 
-void Display::mouse(int button, int status, int x, int y) {
+void Delegator::mouse(int button, int status, int x, int y) {
   for (auto& entity : entities)
     entity->mouseEvent(button, status, x, y);
 }
