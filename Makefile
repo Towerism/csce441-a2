@@ -14,7 +14,7 @@ $(EXECUTABLE): depend $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $< -o $@
 
 depend: makedeps
-	makedepend -f makedeps -- $(CXXFLAGS) -- $(SRCS) &>1 /dev/null
+	makedepend -f makedeps -- $(CXXFLAGS) -- $(SRCS) &> /dev/null
 
 makedeps:
 	touch makedeps
@@ -24,4 +24,4 @@ clean:
 
 .PHONY: depend clean
 
-include makedeps
+-include makedeps
