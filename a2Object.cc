@@ -87,7 +87,7 @@ void A2Object::updateSpin() {
   spin = (reverse ? spin - spinSpeed : spin + spinSpeed);
   if (spin > 360.0)
     spin -= 360.0;
-  if (spin < 360.0)
+  if (spin < 0.0)
     spin += 360.0;
 }
 
