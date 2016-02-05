@@ -1,6 +1,7 @@
 #pragma once
 
 #include "entity.hh"
+#include "tween.hh"
 
 #include <GL/glut.h>
 
@@ -26,6 +27,7 @@ private:
   GLfloat spinSpeed;
   GLfloat spinSpeedBias; // spin speed's resistance to change
   GLenum hexagonMode; // openGL mode used when drawing the hexagon
+  Tween tween;
 
   void mouseDown(bool reverse);
   void spinLayer();

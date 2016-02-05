@@ -2,7 +2,6 @@
 
 #include "colorSetter.hh"
 #include "hexagon.hh"
-#include "tween.hh"
 
 A2Object::A2Object(int x, int y)
   : Entity(x, y),
@@ -61,6 +60,7 @@ void A2Object::mouseEvent(int button, int state, int x, int y) {
 void A2Object::mouseDown(bool reverse) {
   spinSpeed = spinSpeedBase;
   if (lastMouseState == GLUT_DOWN) {
+    tween = Tween();
     if (firstClick)
       yHome = lastMouseY;
     firstClick = false;
@@ -80,7 +80,11 @@ void A2Object::updateSpinSpeed() {
   GLfloat difference = lastMouseY - yHome;
   GLfloat spinSpeedTarget = spinSpeedBase + difference / spinSpeedBias;
   GLfloat increment = 0.02;
-  Tween::linear(spinSpeed, spinSpeedTarget, increment, true);
+  //Tween::linear(spinSpeed, spinSpeedTarget, increment, true);
+  tween.oneShotLinear(spinSpeed, spinSpeedTarget, increment);
+  if (spinSpeed < 0.09) {
+    spinSpeed = 0.09;
+  }
 }
 
 void A2Object::updateSpin() {
