@@ -25,15 +25,13 @@ void initEntities() {
   eventDelegator.add(a2Object);
 }
 
-void init(void) 
-{
+void init(void) {
   initGlut();
   initDisplay();
   initEntities();
 }
 
-void reshape(int w, int h)
-{
+void reshape(int w, int h) {
   glViewport (0, 0, (GLsizei) w, (GLsizei) h);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
@@ -42,8 +40,7 @@ void reshape(int w, int h)
   glLoadIdentity();
 }
 
-void draw(void)
-{
+void draw(void) {
   glClear(GL_COLOR_BUFFER_BIT);
   eventDelegator.draw();
 
@@ -75,8 +72,7 @@ void attachCallbacks() {
  *  Request double buffer mode.
  *  Register mouse input callback functions
  */
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
   glutInit(&argc, argv);
   init();
   attachCallbacks();
