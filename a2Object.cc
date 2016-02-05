@@ -48,6 +48,17 @@ void A2Object::mouseEvent(int button, int state, int x, int y) {
     mouseDown(false);
     break;
   case GLUT_MIDDLE_BUTTON:
+    if (state == GLUT_DOWN) {
+      startX = x;
+      startY = y;
+    } else {
+      endX = x;
+      endY = y;
+      int deltaX = endX - startX;
+      int deltaY = endY - startY;
+      this->x += deltaX * 100 / 250;
+      this->y += -deltaY * 100 / 250;
+    }
     break;
   case GLUT_RIGHT_BUTTON:
     mouseDown(true);
