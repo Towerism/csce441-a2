@@ -88,10 +88,9 @@ void A2Object::spinLayer() {
 }
 
 void A2Object::updateSpinSpeed() {
-  GLfloat difference = lastMouseY - yHome;
+  GLfloat difference = yHome - lastMouseY;
   GLfloat spinSpeedTarget = spinSpeedBase + difference / spinSpeedBias;
   GLfloat increment = 0.02;
-  //Tween::linear(spinSpeed, spinSpeedTarget, increment, true);
   tween.oneShotLinear(spinSpeed, spinSpeedTarget, increment);
   if (spinSpeed < 0.09) {
     spinSpeed = 0.09;
