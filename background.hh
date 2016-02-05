@@ -3,6 +3,7 @@
 #include "entity.hh"
 
 #include "colorSetter.hh"
+#include "tween.hh"
 
 #include <GL/glut.h>
 #include <memory>
@@ -20,5 +21,26 @@ public:
 
 private:
   int width, height;
-  std::shared_ptr<ColorSetter> color;
+  GLfloat intensity;
+  ColorSetter color;
+  ColorSetter lastColor;
+  bool changing;
+  bool reverse;
+  bool firstClick;
+  int lastMouseX;
+  int lastMouseState;
+  int xHome;
+  GLfloat deltaBase;
+  GLfloat delta;
+  GLfloat deltaBias;
+  Tween tween;
+  
+  void changeIntensity();
+  void updateColorDelta();
+  void updateColor();
+  void mouseDown();
+  void setColor(ColorSetter newColor) {
+    color = newColor;
+    lastColor = color;
+  }
 };

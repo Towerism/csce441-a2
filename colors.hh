@@ -6,16 +6,14 @@
 
 namespace Colors {
 
-std::shared_ptr<ColorSetter> cyan =
-  std::make_shared<ColorSetter>(0.0, 1.0, 1.0);
+ColorSetter cyan(0.0, 1.0, 1.0);
+ColorSetter white(1.0, 1.0, 1.0);
+ColorSetter magenta(1.0, 0.0, 1.0);
+ColorSetter yellow(1.0, 1.0, 0.0);
 
-std::shared_ptr<ColorSetter> white =
-  std::make_shared<ColorSetter>(1.0, 1.0, 1.0);
-
-std::shared_ptr<ColorSetter> magenta =
-  std::make_shared<ColorSetter>(1.0, 0.0, 1.0);
-
-std::shared_ptr<ColorSetter> yellow =
-  std::make_shared<ColorSetter>(1.0, 1.0, 0.0);
+ColorSetter halfCyan(0.0, 0.5, 0.5);
+ColorSetter halfWhite(0.5, 0.5, 0.5);
+ColorSetter halfMagenta(0.5, 0.0, 0.5);
+ColorSetter halfYellow(0.5, 0.5, 0.0);
 
 }
