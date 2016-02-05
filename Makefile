@@ -7,11 +7,21 @@ LDFLAGS ?= -lglut -lGL -lGLU
 CXX ?= g++
 RM ?= rm -rf
 
-$(EXECUTABLE): $(OBJECTS)
-	$(CXX) $(LDFLAGS) $^ -o $@
+$(EXECUTABLE): depend $(OBJECTS)
+	$(CXX) $(LDFLAGS) $(OBJECTS) -o $@
 
 .cc.o:
 	$(CXX) $(CXXFLAGS) $< -o $@
 
+depend: makedeps
+	makedepend -f makedeps -- $(CXXFLAGS) -- $(SRCS) &>1 /dev/null
+
+makedeps:
+	touch makedeps
+
 clean:
-	$(RM) *.o $(EXECUTABLE) 
+	$(RM) *.o $(EXECUTABLE) makedeps
+
+.PHONY: depend clean
+
+include makedeps
