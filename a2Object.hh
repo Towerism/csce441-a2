@@ -20,6 +20,7 @@ private:
   bool reverse; // whether spin velocity should be reversed
   bool firstClick; // whether the next click is the first click
   int lastMouseY; // during the most recent mouse event
+  int lastMouseState;
   int yHome; // the x position of the first mouse click
   GLfloat spinSpeedBase;
   GLfloat spinSpeed;
