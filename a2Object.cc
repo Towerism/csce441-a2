@@ -59,16 +59,16 @@ void A2Object::mouseEvent(int button, int state, int x, int y) {
 }
 
 void A2Object::mouseDown(bool reverse) {
-    spinSpeed = spinSpeedBase;
-    if (lastMouseState == GLUT_DOWN) {
-      if (firstClick)
-        yHome = lastMouseY;
-      firstClick = false;
-      this->reverse = reverse;
-      spinning = true;
-    } else {
-      spinning = false;
-    }
+  spinSpeed = spinSpeedBase;
+  if (lastMouseState == GLUT_DOWN) {
+    if (firstClick)
+      yHome = lastMouseY;
+    firstClick = false;
+    this->reverse = reverse;
+    spinning = true;
+  } else {
+    spinning = false;
+  }
 }
 
 void A2Object::spinLayer() {
