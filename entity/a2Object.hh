@@ -1,7 +1,7 @@
 #pragma once
 
 #include "delegate/entity.hh"
-#include "tween.hh"
+#include "tween/tween.hh"
 
 #include <GL/glut.h>
 

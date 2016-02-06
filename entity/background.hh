@@ -3,7 +3,7 @@
 #include "delegate/entity.hh"
 
 #include "color/colorSetter.hh"
-#include "tween.hh"
+#include "tween/tween.hh"
 
 #include <GL/glut.h>
 #include <memory>

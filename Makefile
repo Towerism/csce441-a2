@@ -2,7 +2,8 @@ SRCS := $(wildcard *.cc) \
         $(wildcard color/*.cc) \
         $(wildcard delegate/*.cc) \
         $(wildcard entity/*.cc) \
-        $(wildcard shape/*.cc)
+        $(wildcard shape/*.cc) \
+        $(wildcard tween/*.cc)
 OBJECTS := $(SRCS:.cc=.o)
 DEP := $(OBJECTS:.o=.d)
 EXECUTABLE ?= main

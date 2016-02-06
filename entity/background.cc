@@ -2,7 +2,6 @@
 
 #include "color/colors.hh"
 #include "shape/rectangle.hh"
-#include "tween.hh"
 
 Background::Background(int x, int y, int width, int height)
   : Entity(x, y),
