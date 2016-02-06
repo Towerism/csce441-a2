@@ -12,15 +12,14 @@ LDFLAGS ?= -lglut -lGL -lGLU
 CXX ?= g++
 RM ?= rm -rf
 
-$(EXECUTABLE): depend $(OBJECTS)
+$(EXECUTABLE): $(OBJECTS)
 	$(CXX) $(LDFLAGS) $(OBJECTS) -o $@
 
 %.d: %.cc
 	@$(CXX) $(CXXFLAGS) $< -MM -MT $(@:.d=.o) >$@
 
+.PHONY: clean
 clean:
 	$(RM) $(OBJECTS) $(DEP) $(EXECUTABLE)
-
-.PHONY: depend clean
 
 -include $(DEP)
