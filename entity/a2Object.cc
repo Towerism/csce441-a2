@@ -26,6 +26,7 @@ void A2Object::draw() {
   drawHexagon(0, 0, 50, 50, 12, color, hexagonMode);
 }
 
+// 1,2,3 keys control we are drawn
 void A2Object::keyboardEvent(unsigned char key, int x, int y) {
   switch (key) {
   case '1':
@@ -40,6 +41,7 @@ void A2Object::keyboardEvent(unsigned char key, int x, int y) {
   }
 }
 
+// Controls our position and rotation
 void A2Object::mouseEvent(int button, int state, int x, int y) {
   lastMouseY = y;
   lastMouseState = state;
@@ -68,12 +70,13 @@ void A2Object::mouseEvent(int button, int state, int x, int y) {
   }  
 }
 
+// left click spins us one direction, right click spins us the other direction
 void A2Object::mouseDown(bool reverse) {
   spinSpeed = spinSpeedBase;
   if (lastMouseState == GLUT_DOWN) {
-    tween = Tween();
+    tween = Tween(); // renew our tween
     if (firstClick)
-      yHome = lastMouseY;
+      yHome = lastMouseY; // save y position on initial click
     firstClick = false;
     this->reverse = reverse;
     spinning = true;
@@ -87,6 +90,8 @@ void A2Object::spinLayer() {
   updateSpin();
 }
 
+// Control our spin speed by interpolating between current spin speed
+// and target spin speed
 void A2Object::updateSpinSpeed() {
   GLfloat difference = yHome - lastMouseY;
   GLfloat spinSpeedTarget = spinSpeedBase + difference / spinSpeedBias;

@@ -29,6 +29,7 @@ void Background::changeIntensity() {
   updateColor();
 }
 
+// Interpolate our color from our current color to our target color
 void Background::updateColorDelta() {
   GLfloat difference = lastMouseX - xHome;
   GLfloat deltaTarget = deltaBase + difference / deltaBias;
@@ -44,6 +45,7 @@ void Background::draw() {
   drawRectangle(0, 0, width, height, color);
 }
 
+// c,w,m,y keys control our color
 void Background::keyboardEvent(unsigned char key, int x, int y) {
   switch (key) {
   case 'c':
@@ -61,6 +63,7 @@ void Background::keyboardEvent(unsigned char key, int x, int y) {
   } 
 }
 
+// Change color intensity depending on x
 void Background::mouseEvent(int button, int state, int x, int y) {
   lastMouseX = x;
   lastMouseState = state;

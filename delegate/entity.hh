@@ -8,10 +8,16 @@ class Entity {
 public:
   Entity(int x, int y) : x(x), y(y) { }
 
+  // Handle idle event
   virtual void update() = 0;
+
+  // Handle drawing event
   virtual void draw() = 0;
 
+  // Handle keyboard event
   virtual void keyboardEvent(unsigned char key, int x, int y) = 0;
+
+  // Handle mouse event
   virtual void mouseEvent(int button, int state, int x, int y) = 0;
 
   GLfloat getX() const { return x; }

@@ -4,6 +4,7 @@
 
 #include <GL/glut.h>
 
+// Captures events and delegates them to entities
 EventDelegator eventDelegator;
 
 void initGlut() {
@@ -21,8 +22,10 @@ void initDisplay() {
 void initEntities() {
   Background* background = new Background(-50, -50, 100, 100);
   A2Object* a2Object = new A2Object(-25, 25);
-  eventDelegator.add(background);
-  eventDelegator.add(a2Object);
+  // Order is important
+  // background is added first, so will get drawn before a2Object
+  eventDelegator.add(background); // delegate events to background
+  eventDelegator.add(a2Object); // delegate events to a2Object
 }
 
 void init(void) {

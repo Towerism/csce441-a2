@@ -27,7 +27,7 @@ private:
   GLfloat spinSpeed;
   GLfloat spinSpeedBias; // spin speed's resistance to change
   GLenum hexagonMode; // openGL mode used when drawing the hexagon
-  Tween tween;
+  Tween tween; // for controlling spin speed interpolation
   int startX; // start and end position for dragging
   int startY;
   int endX;
