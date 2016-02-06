@@ -33,7 +33,7 @@ void A2Object::keyboardEvent(unsigned char key, int x, int y) {
     hexagonMode = GL_POINTS;
     break;
   case '2':
-    hexagonMode = GL_LINE_STRIP;
+    hexagonMode = GL_LINE_LOOP;
     break;
   case '3':
     hexagonMode = GL_POLYGON;

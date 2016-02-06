@@ -29,7 +29,6 @@ void drawHexagon(GLint x, GLint y, GLint w, GLint h, GLint delta,
   glVertex2i(x + w, meetup);
   glVertex2i(x + w - delta, y);
   glVertex2i(x + delta, y);
-  glVertex2i(x, meetup);
   glEnd();
 }
 
