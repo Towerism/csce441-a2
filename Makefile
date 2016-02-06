@@ -1,8 +1,9 @@
 SRCS := $(wildcard *.cc)
 OBJECTS := $(SRCS:.cc=.o)
+DEP := $(OBJECTS:.o=.d)
 EXECUTABLE ?= main
 
-CXXFLAGS ?= -std=c++11 -c -Wall --pedantic
+CXXFLAGS ?= -std=c++11 -Wall --pedantic
 LDFLAGS ?= -lglut -lGL -lGLU
 CXX ?= g++
 RM ?= rm -rf
@@ -10,18 +11,12 @@ RM ?= rm -rf
 $(EXECUTABLE): depend $(OBJECTS)
 	$(CXX) $(LDFLAGS) $(OBJECTS) -o $@
 
-.cc.o:
-	$(CXX) $(CXXFLAGS) $< -o $@
-
-depend: makedeps
-	makedepend -f makedeps -- $(CXXFLAGS) -- $(SRCS) &> /dev/null
-
-makedeps:
-	touch makedeps
+%.d: %.cc
+	@$(CXX) $(CXXFLAGS) $< -MM -MT $(@:.d=.o) >$@
 
 clean:
-	$(RM) *.o $(EXECUTABLE) makedeps
+	$(RM) *.o $(DEP) $(EXECUTABLE)
 
 .PHONY: depend clean
 
--include makedeps
+-include $(DEP)
