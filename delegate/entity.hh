@@ -14,6 +14,8 @@ public:
   virtual void keyboardEvent(unsigned char key, int x, int y) = 0;
   virtual void mouseEvent(int button, int state, int x, int y) = 0;
 
+  GLfloat getX() const { return x; }
+  GLfloat getY() const { return y; }
   GLfloat getSpin() const { return spin; }
 
   virtual ~Entity() = default;

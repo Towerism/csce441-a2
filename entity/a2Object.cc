@@ -23,7 +23,7 @@ void A2Object::update() {
 
 void A2Object::draw() {
   ColorSetter color(0.4, 0.2, 0.05);
-  drawHexagon(x, y, 50, 50, 12, color, hexagonMode);
+  drawHexagon(0, 0, 50, 50, 12, color, hexagonMode);
 }
 
 void A2Object::keyboardEvent(unsigned char key, int x, int y) {

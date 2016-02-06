@@ -41,7 +41,7 @@ void Background::updateColor() {
 }
 
 void Background::draw() {
-  drawRectangle(x, y, width, height, color);
+  drawRectangle(0, 0, width, height, color);
 }
 
 void Background::keyboardEvent(unsigned char key, int x, int y) {

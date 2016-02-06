@@ -17,6 +17,7 @@ void EventDelegator::drawEntities() {
 
 void EventDelegator::drawEntity(std::unique_ptr<Entity>& entity) {
   glPushMatrix();
+  glTranslatef(entity->getX(), entity->getY(), 0);
   glRotatef(entity->getSpin(), 0.0, 0.0, 1.0);
   entity->draw();
   glPopMatrix();
