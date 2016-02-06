@@ -1,7 +1,7 @@
 #include "background.hh"
 
-#include "colors.hh"
-#include "rectangle.hh"
+#include "color/colors.hh"
+#include "shape/rectangle.hh"
 #include "tween.hh"
 
 Background::Background(int x, int y, int width, int height)

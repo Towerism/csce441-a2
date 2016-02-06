@@ -1,7 +1,7 @@
 #include "a2Object.hh"
 
-#include "colorSetter.hh"
-#include "hexagon.hh"
+#include "color/colorSetter.hh"
+#include "shape/hexagon.hh"
 
 A2Object::A2Object(int x, int y)
   : Entity(x, y),

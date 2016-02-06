@@ -1,6 +1,6 @@
-#include "a2Object.hh"
-#include "background.hh"
-#include "eventDelegator.hh"
+#include "entity/a2Object.hh"
+#include "entity/background.hh"
+#include "delegate/eventDelegator.hh"
 
 #include <GL/glut.h>
 

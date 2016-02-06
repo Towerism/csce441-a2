@@ -3,7 +3,7 @@
 #include <array>
 #include <GL/glut.h>
 
-#include "colorSetter.hh"
+#include "color/colorSetter.hh"
 
 // draw a colored w by h octogon with x, y coordinates being the top left
 // corner of an imaginary encompassing square

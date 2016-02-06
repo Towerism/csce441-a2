@@ -1,7 +1,5 @@
 #include "hexagon.hh"
 
-#include "colorSetter.hh"
-
 void drawHexagon(GLint x, GLint y, GLint w, GLint h, GLint delta,
                  std::array<ColorSetter, 6> colors) {
   // the x value that the diagonals meet up at

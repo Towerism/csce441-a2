@@ -1,8 +1,8 @@
 #pragma once
 
-#include "entity.hh"
+#include "delegate/entity.hh"
 
-#include "colorSetter.hh"
+#include "color/colorSetter.hh"
 #include "tween.hh"
 
 #include <GL/glut.h>
