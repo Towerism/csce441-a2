@@ -1,0 +1,30 @@
+#+TITLE: CSCE 441 Assignment 2
+#+AUTHOR: Martin Fracker
+Checklist:
+- Draw hexagon
+- Spin when left mouse button pushed down
+- Opposite spin when right mouse button pushed down
+- Spinning stops when mouse button released.
+- Speed of polygon changes smoothly when moving mouse up/down
+- Background intensity changes smoothly when moving left/right
+- Color changes between cyan, yellow, magenta, and white with c,y,m,w keys
+  respectively
+- Toggle 1/2/3 to display points/lines/filled
+- Click and drag polygon position.
+- Window titled correctly
+** Platform
+- Program written and tested on Linux 64-bit.
+- Requires a c++11 compatible compiler
+** Makefile
+Written for GCC on *nix platforms. Requires libglut, libGL, and libGLU to be in
+$PATH
+*** Changing compile and linking flags
+The Makefile can set the environment variables automatically but only if they
+are not previously exported. If the Makefile seems to be broken, one or all of
+the environment variables probably need to be re-exported.
+#+BEGIN_SRC
+$ export CXXFLAGS=-std=c++11 -I.
+$ export LDFLAGS=-lglut -lGL -lGLU
+$ export CXX=g++
+$ make all
+#+END_SRC
