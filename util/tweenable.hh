@@ -9,7 +9,7 @@
 class Tweenable {
 public:
   Tweenable(float base, float bias, float minimum = -std::numeric_limits<float>::max())
-    : base(base), bias(bias), minimum(minimum), value(base) {}
+    : base(base), bias(bias), minimum(minimum), value(base), tweener(value) {}
 
   void tween(float delta, float increment);
   void reset();

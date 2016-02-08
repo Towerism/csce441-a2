@@ -2,20 +2,24 @@
 
 class Tween {
 public:
+  Tween(float& current)
+    : current(current), target(0.0), increment(0.0), complete(false) {}
   // Tweens a current value to a target value using increment over time
   // Once the tween is complete, current is set to 0
-  void oneShotLinear(float& current, float target, float increment);
+  void oneShotLinear();
 
+  void setTarget(float newTarget, float newIncrement);
   void reset();
 
 private:
-  bool complete;
-  float current;
+  float& current;
   float target;
+  float increment;
+  bool complete;
 
-  void checkComplete(bool lessThan);
+  void checkComplete(bool linearUp);
 
-  void linearContinue(float & current, float target, float increment);
-  void linearUp(float& current, float target, float increment);
-  void linearDown(float& current, float target, float increment);
+  void linearContinue();
+  void linearUp();
+  void linearDown();
 };

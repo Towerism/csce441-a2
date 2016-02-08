@@ -1,8 +1,11 @@
 #include "tweenable.hh"
 
+#include <iostream>
 void Tweenable::tween(float delta, float increment) {
   float biasAdjustedDelta = delta / bias;
-  tweener.oneShotLinear(value, base + biasAdjustedDelta, increment);
+  tweener.setTarget(base + biasAdjustedDelta, increment);
+  tweener.oneShotLinear();
+  std::cout << value << std::endl;
   clampToMinimum();
 }
 

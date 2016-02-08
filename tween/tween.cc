@@ -1,37 +1,38 @@
 #include "tween.hh"
 
-void Tween::oneShotLinear(float& current, float target, float increment) {
-  this->current = current;
-  this->target = target;
+void Tween::oneShotLinear() {
   if (!complete)
-    linearContinue(current, target, increment);
-  if (complete)
-    current = 0;
+    linearContinue();
 }
 
-void Tween::linearContinue(float& current, float target, float increment) {
-    if (current < target)
-      linearUp(current, target, increment);
-    else if (current > target)
-      linearDown(current, target, increment);
+void Tween::linearContinue() {
+  if (current < target)
+    linearUp();
+  else if (current > target)
+    linearDown();
 }
 
-void Tween::linearUp(float& current, float target, float increment) {
+void Tween::linearUp() {
   current += increment;
   checkComplete(true);
 }
 
-void Tween::linearDown(float& current, float target, float increment) {
+void Tween::linearDown() {
   current -= increment;
   checkComplete(false);
 }
 
-void Tween::checkComplete(bool lessThan) {
-  if (lessThan) {
+void Tween::checkComplete(bool linearUp) {
+  if (linearUp) {
     if (current > target)
       complete = true;
   } else if (current < target)
     complete = true;
+}
+
+void Tween::setTarget(float newTarget, float newIncrement) {
+  target = newTarget;
+  increment = newIncrement;
 }
 
 void Tween::reset() {
