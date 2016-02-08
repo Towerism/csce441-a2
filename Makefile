@@ -1,5 +1,5 @@
 SRCS := $(wildcard *.cc) \
-        $(wildcard **/*.cc)
+	$(wildcard **/*.cc)
 OBJS := $(SRCS:.cc=.o)
 DEPS := $(OBJS:.o=.d)
 EXECUTABLE ?= main
