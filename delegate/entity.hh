@@ -37,4 +37,6 @@ protected:
   // for the most recently captured mouse event
   int x, y, lastMouseX, lastMouseY, lastMouseState;
   GLfloat spin = 0.0; // how much the polygon on screen should spin
+
+  void saveMouseState(int state, int x, int y);
 };
