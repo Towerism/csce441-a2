@@ -2,6 +2,9 @@
 
 #include "delegate/entity.hh"
 #include "tween/tween.hh"
+#include "util/dragger.hh"
+#include "util/mouseHome.hh"
+#include "util/tweenable.hh"
 
 #include <GL/glut.h>
 
@@ -14,24 +17,17 @@ public:
   virtual void draw() override;
 
   virtual void keyboardEvent(unsigned char key, int x, int y) override;
-  virtual void mouseEvent(int button, int state, int x, int y) override;
+  virtual void leftMouse() override;
+  virtual void middleMouse() override;
+  virtual void rightMouse() override;
 
 private:
   bool spinning;
   bool reverse; // whether spin velocity should be reversed
-  bool firstClick; // whether the next click is the first click
-  int lastMouseY; // during the most recent mouse event
-  int lastMouseState;
-  int yHome; // the x position of the first mouse click
-  GLfloat spinSpeedBase;
-  GLfloat spinSpeed;
-  GLfloat spinSpeedBias; // spin speed's resistance to change
+  MouseHome mouseHome;
+  Tweenable spinSpeed;
   GLenum hexagonMode; // openGL mode used when drawing the hexagon
-  Tween tween; // for controlling spin speed interpolation
-  int startX; // start and end position for dragging
-  int startY;
-  int endX;
-  int endY;
+  Dragger drag; // mechanism for dragging myself
 
   void mouseDown(bool reverse);
   void spinLayer();

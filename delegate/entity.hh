@@ -18,7 +18,13 @@ public:
   virtual void keyboardEvent(unsigned char key, int x, int y) = 0;
 
   // Handle mouse event
-  virtual void mouseEvent(int button, int state, int x, int y) = 0;
+  virtual void mouseEvent(int button, int state, int x, int y);
+
+  virtual void leftMouse() {}
+
+  virtual void middleMouse() {}
+
+  virtual void rightMouse() {}
 
   GLfloat getX() const { return x; }
   GLfloat getY() const { return y; }
@@ -27,6 +33,6 @@ public:
   virtual ~Entity() = default;
 
 protected:
-  int x, y;
+  int x, y, lastMouseX, lastMouseY, lastMouseState;
   GLfloat spin = 0.0; // how much the polygon on screen should spin
 };

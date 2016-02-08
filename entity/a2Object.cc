@@ -7,13 +7,9 @@ A2Object::A2Object(int x, int y)
   : Entity(x, y),
     spinning(false),
     reverse(false),
-    firstClick(true),
-    lastMouseY(0.0),
-    yHome(0),
-    spinSpeedBase(5.0),
-    spinSpeed(spinSpeedBase),
-    spinSpeedBias(30.0),
-    hexagonMode(GL_POLYGON)
+    spinSpeed(5.0, 30.0, 0.09),
+    hexagonMode(GL_POLYGON),
+    drag(this->x, this->y)
 {}
 
 void A2Object::update() {
@@ -41,43 +37,28 @@ void A2Object::keyboardEvent(unsigned char key, int x, int y) {
   }
 }
 
-// Controls our position and rotation
-void A2Object::mouseEvent(int button, int state, int x, int y) {
-  lastMouseY = y;
-  lastMouseState = state;
-  switch (button) {
-  case GLUT_LEFT_BUTTON:
-    mouseDown(false);
-    break;
-  case GLUT_MIDDLE_BUTTON:
-    if (state == GLUT_DOWN) {
-      startX = x;
-      startY = y;
-    } else {
-      endX = x;
-      endY = y;
-      int deltaX = endX - startX;
-      int deltaY = endY - startY;
-      this->x += deltaX * 100 / 250;
-      this->y += -deltaY * 100 / 250;
-    }
-    break;
-  case GLUT_RIGHT_BUTTON:
-    mouseDown(true);
-    break;
-  default:
-    break;
-  }  
+void A2Object::leftMouse() {
+  mouseDown(false);
+}
+
+void A2Object::middleMouse() {
+  if (lastMouseState == GLUT_DOWN) {
+    drag.start(lastMouseX, lastMouseY);
+  } else {
+    drag.end(lastMouseX, lastMouseY);
+    drag();
+  }
+}
+
+void A2Object::rightMouse() {
+  mouseDown(true);
 }
 
 // left click spins us one direction, right click spins us the other direction
 void A2Object::mouseDown(bool reverse) {
-  spinSpeed = spinSpeedBase;
   if (lastMouseState == GLUT_DOWN) {
-    tween = Tween(); // renew our tween
-    if (firstClick)
-      yHome = lastMouseY; // save y position on initial click
-    firstClick = false;
+    spinSpeed.reset();
+    mouseHome.click(lastMouseX, lastMouseY);
     this->reverse = reverse;
     spinning = true;
   } else {
@@ -93,13 +74,8 @@ void A2Object::spinLayer() {
 // Control our spin speed by interpolating between current spin speed
 // and target spin speed
 void A2Object::updateSpinSpeed() {
-  GLfloat difference = yHome - lastMouseY;
-  GLfloat spinSpeedTarget = spinSpeedBase + difference / spinSpeedBias;
-  GLfloat increment = 0.02;
-  tween.oneShotLinear(spinSpeed, spinSpeedTarget, increment);
-  if (spinSpeed < 0.09) {
-    spinSpeed = 0.09;
-  }
+  GLfloat difference = mouseHome.getY() - lastMouseY;
+  spinSpeed.tween(difference, 0.02);
 }
 
 void A2Object::updateSpin() {

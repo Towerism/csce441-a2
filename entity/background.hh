@@ -4,6 +4,8 @@
 
 #include "color/colorSetter.hh"
 #include "tween/tween.hh"
+#include "util/mouseHome.hh"
+#include "util/tweenable.hh"
 
 #include <GL/glut.h>
 #include <memory>
@@ -17,30 +19,19 @@ public:
   virtual void draw() override;
 
   virtual void keyboardEvent(unsigned char key, int x, int y) override;
-  virtual void mouseEvent(int button, int state, int x, int y) override;
+  virtual void leftMouse() override;
+  virtual void rightMouse() override;
 
 private:
   int width, height;
-  GLfloat intensity;
-  ColorSetter color;
-  ColorSetter lastColor;
+  ColorSetter color, lastColor;
   bool changing;
-  bool reverse;
-  bool firstClick;
-  int lastMouseX;
-  int lastMouseState;
-  int xHome;
-  GLfloat deltaBase;
-  GLfloat delta;
-  GLfloat deltaBias;
-  Tween tween;
+  MouseHome mouseHome;
+  Tweenable intensityDelta;
   
   void changeIntensity();
   void updateColorDelta();
   void updateColor();
   void mouseDown();
-  void setColor(ColorSetter newColor) {
-    color = newColor;
-    lastColor = color;
-  }
+  void setColor(ColorSetter newColor);
 };
