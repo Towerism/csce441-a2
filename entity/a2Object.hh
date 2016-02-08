@@ -22,10 +22,10 @@ public:
   virtual void rightMouse() override;
 
 private:
-  bool spinning;
+  bool spinning; // whether we are spinning
   bool reverse; // whether spin velocity should be reversed
   MouseHome mouseHome;
-  Tweenable spinSpeed;
+  Tweenable spinSpeed; // how fast we are spinning
   GLenum hexagonMode; // openGL mode used when drawing the hexagon
   Dragger drag; // mechanism for dragging myself
 

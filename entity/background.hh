@@ -23,11 +23,11 @@ public:
   virtual void rightMouse() override;
 
 private:
-  int width, height;
-  ColorSetter color, lastColor;
-  bool changing;
+  int width, height; // dimensions for the rectangle
+  ColorSetter color, lastColor; // storing lastColor so we can switch back to it
+  bool changing; // whether we are changing colors
   MouseHome mouseHome;
-  Tweenable intensityDelta;
+  Tweenable intensityDelta; // how much to change the intensity of lastColor
   
   void changeIntensity();
   void updateColorDelta();

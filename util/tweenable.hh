@@ -4,6 +4,8 @@
 
 #include <limits>
 
+// Encapsulates a float value that can
+// linearly tween itself to a given delta
 class Tweenable {
 public:
   Tweenable(float base, float bias, float minimum = -std::numeric_limits<float>::max())

@@ -64,6 +64,8 @@ void Background::rightMouse() {
   mouseDown();
 }
 
+// lower intensity when mouse is left of home
+// raise it when mouse is right of home
 void Background::mouseDown() {
   if (lastMouseState == GLUT_DOWN) {
     intensityDelta.reset();

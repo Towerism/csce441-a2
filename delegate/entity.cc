@@ -1,6 +1,7 @@
 #include "entity.hh"
 
 void Entity::mouseEvent(int button, int state, int x, int y) {
+  // save mouse state
   lastMouseX = x;
   lastMouseY = y;
   lastMouseState = state;
