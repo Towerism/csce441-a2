@@ -2,16 +2,16 @@ SRCS := $(wildcard *.cc) \
 	$(wildcard **/*.cc)
 OBJS := $(SRCS:.cc=.o)
 DEPS := $(OBJS:.o=.d)
-EXECUTABLE ?= main
+EXEC ?= main
 
 CXXFLAGS ?= -std=c++11 -Wall --pedantic -I.
 LDFLAGS ?= -lglut -lGL -lGLU
 CXX ?= g++
 RM ?= rm -rf
 
-all: $(EXECUTABLE)
+all: $(EXEC)
 
-$(EXECUTABLE): $(OBJS)
+$(EXEC): $(OBJS)
 	$(CXX) $(LDFLAGS) $^ -o $@
 
 %.d: %.cc
@@ -19,6 +19,6 @@ $(EXECUTABLE): $(OBJS)
 
 .PHONY: clean
 clean:
-	$(RM) $(OBJS) $(DEPS) $(EXECUTABLE)
+	$(RM) $(OBJS) $(DEPS) $(EXEC)
 
 -include $(DEPS)
