@@ -11,17 +11,17 @@ public:
 
   void operator()();
 
-  ColorSetter operator*(GLfloat intensityScale);
   void operator*=(GLfloat intensityScale);
+  ColorSetter operator*(GLfloat intensityScale);
 
-  ColorSetter operator/(GLfloat intensityScale);
   void operator/=(GLfloat intensityScale);
+  ColorSetter operator/(GLfloat intensityScale);
 
-  ColorSetter operator+(GLfloat intensityDelta);
   void operator+=(GLfloat intensityDelta);
+  ColorSetter operator+(GLfloat intensityDelta);
 
-  ColorSetter operator-(GLfloat intensityDelta);
   void operator-=(GLfloat intensityDelta);
+  ColorSetter operator-(GLfloat intensityDelta);
 
   bool operator==(ColorSetter other);
 
