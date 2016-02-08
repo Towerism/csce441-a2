@@ -20,5 +20,7 @@ public:
 private:
   float base, bias, minimum, value;
   Tween tweener;
+
+  void clampToMinimum();
 };
 
