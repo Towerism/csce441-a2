@@ -20,8 +20,8 @@ void initDisplay() {
 }
 
 void initEntities() {
-  Background* background = new Background(-50, -50, 100, 100);
-  A2Object* a2Object = new A2Object(-25, 25);
+  Background* background = new Background(0, 0, 250, 250);
+  A2Object* a2Object = new A2Object(25, 75);
   // Order is important
   // background is added first, so will get drawn before a2Object
   eventDelegator.add(background); // delegate events to background
@@ -38,7 +38,7 @@ void reshape(int w, int h) {
   glViewport (0, 0, (GLsizei) w, (GLsizei) h);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(-50.0, 50.0, -50.0, 50.0, -1.0, 1.0);
+  gluOrtho2D(0.0, 250.0, 0.0, 250.0);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 }

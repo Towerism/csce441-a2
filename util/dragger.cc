@@ -13,6 +13,6 @@ void Dragger::end(int x, int y) {
 void Dragger::operator()() {
   int deltaX = endX - startX;
   int deltaY = endY - startY;
-  xBinding += deltaX * 100 / 250;
-  yBinding += -deltaY * 100 / 250;
+  xBinding += deltaX;
+  yBinding += -deltaY;
 }
