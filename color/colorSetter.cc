@@ -41,7 +41,7 @@ ColorSetter ColorSetter::operator-(GLfloat intensityDelta) {
 }
 
 void ColorSetter::operator-=(GLfloat intensityDelta) {
-  *this -= intensityDelta;
+  *this += -intensityDelta;
 }
 
 bool ColorSetter::operator==(ColorSetter other) {
