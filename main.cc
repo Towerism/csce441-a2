@@ -21,7 +21,7 @@ void initDisplay() {
 
 void initEntities() {
   Background* background = new Background(0, 0, 250, 250);
-  A2Object* a2Object = new A2Object(25, 75);
+  A2Object* a2Object = new A2Object(100, 150);
   // Order is important
   // background is added first, so will get drawn before a2Object
   eventDelegator.add(background); // delegate events to background
