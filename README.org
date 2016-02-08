@@ -28,3 +28,10 @@ $ export LDFLAGS=-lglut -lGL -lGLU
 $ export CXX=g++
 $ make all
 #+END_SRC
+*** Running
+Run ~./main~ if it exists otherwise it must be compiled. See above if there are
+compiler errors.
+#+BEGIN_SRC
+$ make all
+$ ./main
+#+END_SRC
