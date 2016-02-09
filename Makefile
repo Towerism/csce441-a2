@@ -1,3 +1,11 @@
+# Copyright 2016 
+# All Rights Reserved.
+#
+# This project is free software, released under the terms
+# of the GNU General Public License v3. Please see the
+# file LICENSE in the root directory or visit
+# www.gnu.org/licenses/gpl-3.0.en.html for license terms.
+
 SRCS := $(wildcard *.cc) \
 	$(wildcard **/*.cc)
 OBJS := $(SRCS:.cc=.o)
