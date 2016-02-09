@@ -5,8 +5,7 @@
 
 Background::Background(int x, int y, int width, int height)
   : Entity(x, y),
-    width(width),
-    height(height),
+    dimensions({width, height}),
     color(Colors::halfCyan),
     lastColor(color),
     changing(false),
@@ -23,7 +22,6 @@ void Background::changeIntensity() {
   updateColor();
 }
 
-#include <iostream>
 // Interpolate our color from our current color to our target color
 void Background::updateColorDelta() {
   GLfloat difference = lastMouseX - mouseHome.getX();
@@ -35,11 +33,11 @@ void Background::updateColor() {
 }
 
 void Background::draw() {
-  drawRectangle(0, 0, width, height, color);
+  drawRectangle({0, 0}, dimensions, color);
 }
 
 // c,w,m,y keys control our color
-void Background::keyboardEvent(unsigned char key, int x, int y) {
+void Background::keyboardEvent(unsigned char key, Vector2 mousePosition) {
   switch (key) {
   case 'c':
     setColor(Colors::halfCyan);

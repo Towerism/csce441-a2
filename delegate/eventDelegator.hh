@@ -5,6 +5,8 @@
 #include <vector>
 #include <memory>
 
+#include "util/vector2.hh"
+
 // delegates events to entities
 class EventDelegator {
 public:
@@ -20,10 +22,10 @@ public:
   void idle();
 
   // Delegate mouse event to each entity
-  void mouse(int button, int status, int x, int y);
+  void mouse(int button, int status, Vector2 mousePosition);
 
   // Delegate keyboard event to each entity
-  void keyboard(unsigned char key, int x, int y);
+  void keyboard(unsigned char key, Vector2 mousePosition);
 
 private:
   std::vector<std::unique_ptr<Entity>> entities;

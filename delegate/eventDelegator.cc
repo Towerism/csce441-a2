@@ -1,4 +1,5 @@
 #include "eventDelegator.hh"
+#include "util/transform2D.hh"
 
 #include <GL/glut.h>
 
@@ -17,8 +18,8 @@ void EventDelegator::drawEntities() {
 
 void EventDelegator::drawEntity(std::unique_ptr<Entity>& entity) {
   glPushMatrix();
-  glTranslatef(entity->getX(), entity->getY(), 0);
-  glRotatef(entity->getSpin(), 0.0, 0.0, 1.0);
+  Transform2D::translate(entity->getPosition());
+  Transform2D::rotate(entity->getSpin(), entity->getOrigin());
   entity->draw();
   glPopMatrix();
 }
@@ -28,12 +29,12 @@ void EventDelegator::idle() {
     entity->update();
 }
 
-void EventDelegator::mouse(int button, int status, int x, int y) {
+void EventDelegator::mouse(int button, int status, Vector2 mousePosition) {
   for (auto& entity : entities)
-    entity->mouseEvent(button, status, x, y);
+    entity->mouseEvent(button, status, mousePosition);
 }
 
-void EventDelegator::keyboard(unsigned char key, int x, int y) {
+void EventDelegator::keyboard(unsigned char key, Vector2 mousePosition) {
   for (auto& entity : entities)
-    entity->keyboardEvent(key, x, y);
+    entity->keyboardEvent(key, mousePosition);
 }

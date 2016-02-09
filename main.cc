@@ -56,11 +56,11 @@ void idle() {
 }
 
 void mouse(int button, int status, int x, int y) {
-  eventDelegator.mouse(button, status, x, y);
+  eventDelegator.mouse(button, status, {x, y});
 }
 
 void keyboard(unsigned char key, int x, int y) {
-  eventDelegator.keyboard(key,  x, y);
+  eventDelegator.keyboard(key, {x, y});
 }
 
 void attachCallbacks() {

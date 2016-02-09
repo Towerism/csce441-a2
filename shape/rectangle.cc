@@ -1,6 +1,6 @@
 #include "rectangle.hh"
 
-void drawRectangle(GLint x, GLint y, GLint w, GLint h, ColorSetter color) {
+void drawRectangle(Vector2 position, Vector2 dimensions, ColorSetter color) {
   color();
-  glRectf(x, y, x + w, y + h);
+  glRectf(position.x, position.y, position.x + dimensions.x, position.y + dimensions.y);
 }

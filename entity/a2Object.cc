@@ -5,12 +5,15 @@
 
 A2Object::A2Object(int x, int y)
   : Entity(x, y),
+    dimensions({50, 50}),
     spinning(false),
     reverse(false),
     spinSpeed(5.0, 30.0, 0.09),
     hexagonMode(GL_POLYGON),
-    drag(this->x, this->y)
-{}
+    drag(position.x, position.y)
+{
+  origin = {-dimensions.x / 2, dimensions.y / 2};
+}
 
 void A2Object::update() {
   if (spinning)
@@ -19,11 +22,11 @@ void A2Object::update() {
 
 void A2Object::draw() {
   ColorSetter color(0.4, 0.2, 0.05);
-  drawHexagon(0, 0, 50, 50, 12, color, hexagonMode);
+  drawHexagon({0, 0}, dimensions, 12, color, hexagonMode);
 }
 
 // 1,2,3 keys control we are drawn
-void A2Object::keyboardEvent(unsigned char key, int x, int y) {
+void A2Object::keyboardEvent(unsigned char key, Vector2 mousePosition) {
   switch (key) {
   case '1':
     hexagonMode = GL_POINTS;

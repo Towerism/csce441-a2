@@ -16,12 +16,13 @@ public:
   virtual void update() override;
   virtual void draw() override;
 
-  virtual void keyboardEvent(unsigned char key, int x, int y) override;
+  virtual void keyboardEvent(unsigned char key, Vector2 mousePosition) override;
   virtual void leftMouse() override;
   virtual void middleMouse() override;
   virtual void rightMouse() override;
 
 private:
+  Vector2 dimensions;
   bool spinning; // whether we are spinning
   bool reverse; // whether spin velocity should be reversed
   MouseHome mouseHome;

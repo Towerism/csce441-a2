@@ -1,7 +1,7 @@
 #include "entity.hh"
 
-void Entity::mouseEvent(int button, int state, int x, int y) {
-  saveMouseState(state, x, y);
+void Entity::mouseEvent(int button, int state, Vector2 mousePosition) {
+  saveMouseState(state, mousePosition);
   switch (button) {
   case GLUT_LEFT_BUTTON:
     leftMouse();
@@ -15,8 +15,8 @@ void Entity::mouseEvent(int button, int state, int x, int y) {
   }  
 }
 
-void Entity::saveMouseState(int state, int x, int y) {
+void Entity::saveMouseState(int state, Vector2 mousePosition) {
   lastMouseState = state;
-  lastMouseX = x;
-  lastMouseY = y;
+  lastMouseX = mousePosition.x;
+  lastMouseY = mousePosition.y;
 }
