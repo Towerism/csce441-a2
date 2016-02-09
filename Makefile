@@ -18,7 +18,14 @@ $(EXEC): $(OBJS)
 	@$(CXX) $(CXXFLAGS) $< -MM -MT $(@:.d=.o) >$@
 
 .PHONY: clean
-clean:
-	$(RM) $(OBJS) $(DEPS) $(EXEC)
+clean: clean/intermediate clean/exec
+
+.PHONY: clean/exec
+clean/exec:
+	$(RM) $(EXEC)
+
+.PHONY: clean/intermediate
+clean/intermediate:
+	$(RM) $(OBJS) $(DEPS)
 
 -include $(DEPS)
