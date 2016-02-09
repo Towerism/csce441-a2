@@ -26,8 +26,8 @@ public:
 
   virtual void rightMouse() {}
 
-  GLfloat getX() const { return x; }
-  GLfloat getY() const { return y; }
+  int getX() const { return x; }
+  int getY() const { return y; }
   GLfloat getSpin() const { return spin; }
 
   virtual ~Entity() = default;
