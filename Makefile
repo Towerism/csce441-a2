@@ -1,4 +1,4 @@
-# Copyright 2016 
+# Copyright 2016 Martin Fracker, Jr.
 # All Rights Reserved.
 #
 # This project is free software, released under the terms
